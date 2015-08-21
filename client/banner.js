@@ -73,6 +73,10 @@ Meteor.startup(function(){
 						Session.set('MeteorConnection-retryTimeSeconds', retryIn);
 						Session.set('MeteorConnection-failedReason', Meteor.status().reason);
 					},500);
+			} else {
+                        	Meteor.setTimeout(function(){
+                            		Session.set('MeteorConnection-wasConnected', true);
+                        	}, 5000);
 			}
 		}
 		Session.set('MeteorConnection-isConnected', isConnected);
